@@ -1,1 +1,1 @@
-# chinese_qa_with_bert
+# chinese_qa_with_bertr
