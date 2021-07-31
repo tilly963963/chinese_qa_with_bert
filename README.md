@@ -25,6 +25,13 @@ Evaluating: 100%|█████████████████████
 江 苏 路 街 道 是 中 国 上 海 市 长 
 ```
 
+輸入文本與問題
+
+資料預處理
+
+序列資料:
+滑動窗格並以固定上限字數(max_seq_length)自動切割文本，整合為序列資料
+每一序列為固定上限字數，最後未達固定上限字數之序列資料以補0表示
 
 
 ### 模型輸入
@@ -48,11 +55,21 @@ end_position= None
 
 ### 資料前處理
 
-先將資料進行前處理，再進行輸入
+序列資料:
+
+滑動窗格並以固定上限字數(max_seq_length)自動切割文本，整合為序列資料
+
+每一序列為固定上限字數，最後未達固定上限字數之序列資料以補0表示
+
+![radar]https://myppt.cc/lypGC7
+
+![radar]https://ppt.cc/f9VRTx@.png
+
+例如:
 
 max_seq_length文本長度限制:384
 
-一次序列文本限制:max_seq_length-問題(15)-3=366
+max_tokens_for_doc一次序列文本限制:max_seq_length-問題(15)-3=366
 
 len(all_doc_tokens)文本長度 = 434 
 
@@ -83,7 +100,9 @@ start_position= None
 end_position= None
 ```
 ### 模型架構
+
 ![radar](https://ppt.cc/fTRanx@.png)
+
 模型有12層(假設有6個滑動窗格)
 
 經過 BertEncoder、(BertLayer、BertAttention、BertSelfAttention)*12
